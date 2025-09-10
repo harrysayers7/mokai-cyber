@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       data: {
         organizationId: org.id,
         action: 'organization.created',
-        details: JSON.stringify({ name: org.name, abn: org.abn })
+        details: { name: org.name, abn: org.abn }
       }
     })
     

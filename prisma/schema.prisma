@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -43,7 +43,7 @@ model AuditLog {
   organizationId String
   userId         String?  // Will connect to Clerk later
   action         String   // e.g., 'control.update', 'report.generated'
-  details        String?  // Store JSON as string for SQLite
+  details        Json?    // Store any relevant data
   ipAddress      String?
   createdAt      DateTime @default(now())
   
