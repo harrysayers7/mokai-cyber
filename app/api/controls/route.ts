@@ -52,11 +52,11 @@ export async function PUT(request: Request) {
       data: {
         organizationId,
         action: 'control.updated',
-        details: { 
+        details: JSON.stringify({ 
           controlId, 
           maturityLevel: parseInt(maturityLevel),
           previousLevel: control.maturityLevel 
-        }
+        })
       }
     })
     

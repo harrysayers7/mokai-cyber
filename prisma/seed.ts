@@ -40,12 +40,12 @@ async function main() {
       {
         organizationId: org.id,
         action: 'organization.created',
-        details: { name: org.name }
+        details: JSON.stringify({ name: org.name })
       },
       {
         organizationId: org.id,
         action: 'assessment.completed',
-        details: { assessor: 'Jack Bell', date: new Date().toISOString() }
+        details: JSON.stringify({ assessor: 'Jack Bell', date: new Date().toISOString() })
       }
     ]
   })

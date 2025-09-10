@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -28,7 +28,7 @@ model Control {
   organizationId String
   controlId      String   // e.g., 'app-control', 'patch-apps'
   maturityLevel  Int      @default(0) // 0-3 as per Essential Eight
-  evidence       String?  @db.Text
+  evidence       String?
   lastUpdated    DateTime @default(now())
   nextReview     DateTime
   
@@ -43,7 +43,7 @@ model AuditLog {
   organizationId String
   userId         String?  // Will connect to Clerk later
   action         String   // e.g., 'control.update', 'report.generated'
-  details        Json?    // Store any relevant data
+  details        String?  // Store JSON as string for SQLite
   ipAddress      String?
   createdAt      DateTime @default(now())
   
